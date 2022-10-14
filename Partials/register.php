@@ -9,15 +9,21 @@
 <body>
     <h1>Regsiter login</h1>
 
-    <form action="" method="post">
-        <input type="text" name="username" >
+    <form action="../Actions/register.php" method="post">
+        <input type="text" name="username" placeholder="Enter the username" >
         <br>
-        <input type="password" name="password" >
         <br>
-        <input type="email" name="email" >
+        <input type="password" name="password" placeholder="Enter the password" >
+        <br>
+        <br>
+        <input type="email" name="useremail" placeholder="Enter the email">
+        <br>
         <br>
         <button>Register</button>
     </form>
+    <br>
+    <br>
+    <a href="./login.php">Login Page</a>
     <br>
     <br>
     <br>
