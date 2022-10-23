@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 22, 2022 at 07:52 PM
+-- Generation Time: Oct 23, 2022 at 08:02 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -20,6 +20,27 @@ SET time_zone = "+00:00";
 --
 -- Database: `library`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `adminuser`
+--
+
+CREATE TABLE `adminuser` (
+  `id` int(11) NOT NULL,
+  `username` varchar(126) NOT NULL,
+  `password` varchar(126) NOT NULL,
+  `email` varchar(100) NOT NULL,
+  `addedby` varchar(126) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `adminuser`
+--
+
+INSERT INTO `adminuser` (`id`, `username`, `password`, `email`, `addedby`) VALUES
+(1, 'admin', 'admin', '', 'admin');
 
 -- --------------------------------------------------------
 
@@ -62,6 +83,12 @@ INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES
 --
 
 --
+-- Indexes for table `adminuser`
+--
+ALTER TABLE `adminuser`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `books`
 --
 ALTER TABLE `books`
@@ -77,6 +104,12 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `adminuser`
+--
+ALTER TABLE `adminuser`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `books`
