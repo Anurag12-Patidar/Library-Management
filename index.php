@@ -18,7 +18,7 @@ include ('./Actions/functions.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Book-It</title>
 </head>
 <body>
     <h1>Home Page</h1>
@@ -44,17 +44,39 @@ include ('./Actions/functions.php');
     ?>
 
 <!--Section to display the Books-->
+    <?php
+//    Get all the categories
+    $categories = getAllTheCategoriesOfBooks();
+    ?>
+
     <section>
         <?php
 //        Need to get a book category from the database and display it in the div
+        for($i=0;$i<count($categories);$i++){
+//        Get the books for categories : $categories[$i][0]
+//            $BooksData contains the details of the books of a category
+        $BooksData = getAllTheBooksForACategory($categories[$i][0]);
 
         ?>
-        <div>
+        <div class="category" id="<?php echo $categories[$i][0] ?>">
+            <h1> <?php echo $categories[$i][0]  ?> </h1>
+            <?php
+//              Display the particular books
+            for($j=0;$j<count($BooksData);$j++){
+            ?>
+                    <div class="book">
+                        <img src="./Uploads/<?php echo $BooksData[$j][3]?>" alt="">
+                <h3><?php echo $BooksData[$j][2] ?></h3>
+                <p><?php echo $BooksData[$j][4] ?></p>
+                <p><?php echo $BooksData[$j][5] ?></p>
+                    </div>
 
+            <?php
+            }
+            ?>
         </div>
         <?php
-
-
+        }
         ?>
     </section>
 

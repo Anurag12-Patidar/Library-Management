@@ -50,6 +50,8 @@ function addUserToTheDatabase($username,$password,$email){
 }
 
 // TODO:  Check the function  -   Create function to validate the user creadentials
+//done
+// verified
 function checkUserByUsernameAndPassword($username,$password){
     /*
      * return : data if user is present with the $username and $password
@@ -67,5 +69,46 @@ function checkUserByUsernameAndPassword($username,$password){
 }
 
 
+/*
+ * Function to display the books to the user
+ * */
 
+//done
+//verifies
+function getAllTheCategoriesOfBooks(){
+    /*
+     * return :
+     *  all the distinct categories in the book database
+     *
+     * query user : SELECT DISTINCT(category) FROM `books`;
+     *
+     * */
+    $query = "SELECT DISTINCT(category) FROM `books`";
+    $result = mysqli_query($GLOBALS['con'],$query);
 
+    $data =  mysqli_fetch_all($result);
+    if($data){
+        return $data;
+    }
+    return false;
+
+}
+
+function getAllTheBooksForACategory($category){
+    /*
+     * return :
+     *  books of a category from the books table to the user
+     *
+     * SQL query : SELECT * FROM `books` where category='';
+     * */
+
+    $query = "SELECT * FROM `books` where category='$category'";
+    $result = mysqli_query($GLOBALS['con'],$query);
+
+    $data =  mysqli_fetch_all($result);
+    if($data){
+        return $data;
+    }
+    return false;
+
+}
