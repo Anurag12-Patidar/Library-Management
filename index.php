@@ -47,38 +47,49 @@ include ('./Actions/functions.php');
     <?php
 //    Get all the categories
     $categories = getAllTheCategoriesOfBooks();
-    ?>
-
-    <section>
-        <?php
-//        Need to get a book category from the database and display it in the div
-        for($i=0;$i<count($categories);$i++){
+    if(!$categories){
+        ?>
+        <div class="nobookfound">
+            <h5>Soory no books available at this time</h5>
+        </div>
+    <?php
+    }else{
+        ?>
+        <section>
+            <?php
+            //        Need to get a book category from the database and display it in the div
+            for($i=0;$i<count($categories);$i++){
 //        Get the books for categories : $categories[$i][0]
 //            $BooksData contains the details of the books of a category
-        $BooksData = getAllTheBooksForACategory($categories[$i][0]);
+                $BooksData = getAllTheBooksForACategory($categories[$i][0]);
 
-        ?>
-        <div class="category" id="<?php echo $categories[$i][0] ?>">
-            <h1> <?php echo $categories[$i][0]  ?> </h1>
-            <?php
-//              Display the particular books
-            for($j=0;$j<count($BooksData);$j++){
-            ?>
-                    <div class="book">
-                        <img src="./Uploads/<?php echo $BooksData[$j][3]?>" alt="">
-                <h3><?php echo $BooksData[$j][2] ?></h3>
-                <p><?php echo $BooksData[$j][4] ?></p>
-                <p><?php echo $BooksData[$j][5] ?></p>
-                    </div>
+                ?>
+                <div class="category" id="<?php echo $categories[$i][0] ?>">
+                    <h1> <?php echo $categories[$i][0]  ?> </h1>
+                    <?php
+                    //              Display the particular books
+                    for($j=0;$j<count($BooksData);$j++){
+                        ?>
+                        <div class="book">
+                            <img src="./Uploads/<?php echo $BooksData[$j][3]?>" alt="">
+                            <h3><?php echo $BooksData[$j][2] ?></h3>
+                            <p><?php echo $BooksData[$j][4] ?></p>
+                            <p><?php echo $BooksData[$j][5] ?></p>
+                        </div>
 
-            <?php
+                        <?php
+                    }
+                    ?>
+                </div>
+                <?php
             }
             ?>
-        </div>
+        </section>
         <?php
-        }
-        ?>
-    </section>
+    }
+    ?>
+
+
 
 
 </body>
