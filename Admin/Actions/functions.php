@@ -105,16 +105,20 @@ function getTotalCategory(){
 
 }
 
-function addBookDataToTheDatabase($bookName,$category,$author,$publication,$year,$photo){
+function addBookDataToTheDatabase(
+    $bookName,$category,$author,$publication,$year,$photo,$link
+){
     /*
      * return : true if data is added successfully
      *          else: false if data is not added successfully
      *
      * adding the book data to the database
      * */
-        $query = "insert into books (category,bookname,image,bookauthor,bookpublication,bookyear) 
+        $query = "insert into books (
+                   category,bookname,image,bookauthor,bookpublication,bookyear,link
+                   ) 
                     values (
-                            '$category','$bookName','$photo','$author','$publication','$year'
+                            '$category','$bookName','$photo','$author','$publication','$year','$link'
                     ) ";
     $result = mysqli_query($GLOBALS['con'],$query);
     if($result){

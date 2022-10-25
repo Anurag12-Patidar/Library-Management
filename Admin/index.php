@@ -56,6 +56,9 @@ $totalCategory = getTotalCategory();
             <input type="file" name="photo" placeholder="Image" required>
             <br>
             <br>
+            <input type="text" name="link" placeholder="Link" required>
+            <br>
+            <br>
             <button>Submit</button>
         </form>
     </body>

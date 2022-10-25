@@ -6,6 +6,7 @@ $category = $_POST['category'];
 $author = $_POST['author'];
 $publication = $_POST['publication'];
 $year = $_POST['year'];
+$link = $_POST['link'];
 
 // Photo
 $photo = $_FILES['photo']['name'];
@@ -27,9 +28,10 @@ alert('file was successfully moved')
 function addBookDataToTheDatabase($bookName,$category,$author,$publication,$year,$photo){
 
  * */
-$status = addBookDataToTheDatabase($bookName,$category,$author,$publication,$year,$photo);
+$status = addBookDataToTheDatabase($bookName,$category,$author,$publication,$year,$photo,$link);
 
 if(!$status){
+//    Unable to add the book
     echo "<script>
         alert('unable to add the data , please try again later')
         window.location='../';
@@ -37,7 +39,11 @@ if(!$status){
 
 ";
 }
+// Book was added successfully
 
+echo "<script>
+        alert('Book was added successfully')
+        window.location='../';
+    </script>
 
-
-echo "Book was added successfully";
+";
