@@ -1,7 +1,6 @@
 <?php
 include ('connect.php');
 
-//TODO : check if the username is already present in the table
 //Done
 // verified
 function checkDuplicateUserByUsername($username){
@@ -22,7 +21,6 @@ function checkDuplicateUserByUsername($username){
     return false;
 
 }
-
 //Done
 //verified
 function addUserToTheDatabase($username,$password,$email){
@@ -48,8 +46,6 @@ function addUserToTheDatabase($username,$password,$email){
 
     return false;
 }
-
-// TODO:  Check the function  -   Create function to validate the user creadentials
 //done
 // verified
 function checkUserByUsernameAndPassword($username,$password){
@@ -74,7 +70,7 @@ function checkUserByUsernameAndPassword($username,$password){
  * */
 
 //done
-//verifies
+//verified
 function getAllTheCategoriesOfBooks(){
     /*
      * return :
@@ -93,7 +89,8 @@ function getAllTheCategoriesOfBooks(){
     return false;
 
 }
-
+//done
+//verified
 function getAllTheBooksForACategory($category){
     /*
      * return :
@@ -111,4 +108,21 @@ function getAllTheBooksForACategory($category){
     }
     return false;
 
+}
+//done
+//verified
+function getBookDetailsById($id){
+    /*
+     * return :
+     *  All the details of the book by the given id
+     *
+     * */
+    $query = "SELECT * FROM `books` where id = $id";
+    $result = mysqli_query($GLOBALS['con'],$query);
+
+    $data =  mysqli_fetch_all($result);
+    if($data){
+        return $data[0];
+    }
+    return false;
 }

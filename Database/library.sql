@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2022 at 08:02 PM
+-- Generation Time: Oct 25, 2022 at 09:33 AM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -40,7 +40,9 @@ CREATE TABLE `adminuser` (
 --
 
 INSERT INTO `adminuser` (`id`, `username`, `password`, `email`, `addedby`) VALUES
-(1, 'admin', 'admin', '', 'admin');
+(1, 'admin', 'admin', '', 'admin'),
+(2, 'testadmin', 'testadmin', 'testadmin@gmail.com', 'admin'),
+(3, 'test2', 'test2', 'test@gmail.com', 'testadmin');
 
 -- --------------------------------------------------------
 
@@ -51,12 +53,21 @@ INSERT INTO `adminuser` (`id`, `username`, `password`, `email`, `addedby`) VALUE
 CREATE TABLE `books` (
   `id` int(11) NOT NULL,
   `category` varchar(100) NOT NULL,
-  `bookname` varchar(1024) NOT NULL,
+  `bookname` varchar(256) NOT NULL,
   `image` varchar(300) NOT NULL,
   `bookauthor` varchar(200) NOT NULL,
   `bookpublication` varchar(200) NOT NULL,
-  `bookyear` varchar(4) NOT NULL
+  `bookyear` varchar(4) NOT NULL,
+  `link` varchar(1024) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `books`
+--
+
+INSERT INTO `books` (`id`, `category`, `bookname`, `image`, `bookauthor`, `bookpublication`, `bookyear`, `link`) VALUES
+(1, 'Science fiction', 'Dune', 'dune.jpg', 'Frank Herbert ', 'Mass Market Paperback', '1990', 'https://www.amazon.in/Dune-Frank-Herbert/dp/0441172717'),
+(2, 'Military', 'The Art of War', 'art of warr.webp', ' Sun Tzu ', 'Paperback', '2006', 'https://www.amazon.in/Art-War-Sun-Tzu/dp/8129140438');
 
 -- --------------------------------------------------------
 
@@ -76,7 +87,8 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `username`, `password`, `email`) VALUES
-(1, 'sarapapa', 'asda@gmail.com', 'asdasd');
+(1, 'sarapapa', 'asda@gmail.com', 'asdasd'),
+(2, 'user', 'user', 'user@gmail.com');
 
 --
 -- Indexes for dumped tables
@@ -93,7 +105,7 @@ ALTER TABLE `adminuser`
 --
 ALTER TABLE `books`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `bookname` (`bookname`) USING HASH;
+  ADD UNIQUE KEY `bookname` (`bookname`);
 
 --
 -- Indexes for table `user`
@@ -109,19 +121,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `adminuser`
 --
 ALTER TABLE `adminuser`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `books`
 --
 ALTER TABLE `books`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
