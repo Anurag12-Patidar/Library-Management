@@ -21,7 +21,7 @@ include ('./Actions/functions.php');
     <title>Book-It</title>
 </head>
 <body>
-    <h1>Home Page</h1>
+<h1>Book-IT</h1>
     <?php
 //    Navigation for the user
         if($username){
@@ -44,6 +44,7 @@ include ('./Actions/functions.php');
     ?>
 
 <!--Section to display the Books-->
+<h2>Categories</h2>
     <?php
 //    Get all the categories
     $categories = getAllTheCategoriesOfBooks();
@@ -61,27 +62,16 @@ include ('./Actions/functions.php');
             for($i=0;$i<count($categories);$i++){
 //        Get the books for categories : $categories[$i][0]
 //            $BooksData contains the details of the books of a category
-                $BooksData = getAllTheBooksForACategory($categories[$i][0]);
-
                 ?>
-                <div class="category" id="<?php echo $categories[$i][0] ?>">
-                    <h1> <?php echo $categories[$i][0]  ?> </h1>
-                    <?php
-                    //              Display the particular books
-                    for($j=0;$j<count($BooksData);$j++){
-                        ?>
-                        <div class="book">
-                            <img src="./Uploads/<?php echo $BooksData[$j][3]?>" alt="">
-                            <h3><?php echo $BooksData[$j][2] ?></h3>
-                            <p><?php echo $BooksData[$j][4] ?></p>
-                            <p><?php echo $BooksData[$j][5] ?></p>
-                        </div>
-
-                        <?php
-                    }
-                    ?>
+                <div class="main-category">
+                   <h3> <?php echo $categories[$i][0] ?> </h3>
+                    <p>Content of the Category</p>
+                    <form action="./Partials/categoryview.php" method="post">
+                        <input type="hidden" name="category" value="<?php echo $categories[$i][0] ?>">
+                        <button>More</button>
+                    </form>
                 </div>
-                <?php
+            <?php
             }
             ?>
         </section>
