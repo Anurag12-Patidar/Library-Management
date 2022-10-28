@@ -19,11 +19,17 @@ include ('./Actions/functions.php');
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book-It</title>
+<!--    For main styling -->
+    <link rel="stylesheet" href="./Assets/styling/main.css">
+<!--    Nav bar styling -->
+    <link rel="stylesheet" href="./Assets/styling/navbar.css">
+
 </head>
 <body>
-<h1>Book-IT</h1>
-    <?php
-//    Navigation for the user
+    <nav class="navbar">
+        <h1>Book-IT</h1>
+        <?php
+        //    Navigation for the user
         if($username){
 //            Username if found in the session so display the username and the button to logout
             ?>
@@ -31,7 +37,7 @@ include ('./Actions/functions.php');
             <br>
             <a href="./Actions/logout.php"><button>Logout</button></a>
 
-    <?php
+            <?php
         }else{
 //            No user is found , so link to login
             ?>
@@ -41,7 +47,9 @@ include ('./Actions/functions.php');
             <a href="./Partials/register.php"><button>Register</button></a>
             <?php
         }
-    ?>
+        ?>
+    </nav>
+
 
 <!--Section to display the Books-->
 <h2>Categories</h2>
