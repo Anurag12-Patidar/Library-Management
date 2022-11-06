@@ -21,10 +21,7 @@ include ('./Actions/functions.php');
     <title>Book-It</title>
 <!--    For main styling -->
     <link rel="stylesheet" href="./Assets/styling/main.css">
-<!--    Nav bar styling -->
-    <link rel="stylesheet" href="./Assets/styling/navbar.css">
 
-<!--    -->
     <link rel="stylesheet" href="./Assets/styling/container.css">
 
 </head>
