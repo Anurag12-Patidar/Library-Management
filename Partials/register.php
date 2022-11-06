@@ -32,9 +32,9 @@
     <div class="form-container sign-in-container">
         <form action="../Actions/register.php" method="post">
             <h1>Sign Up</h1>
-            <input type="text" placeholder="Username" name="username"/>
-            <input type="email" placeholder="Email" name="email"/>
-            <input type="password" placeholder="Password" name="password"/>
+            <input type="text" placeholder="Username" name="username" required/>
+            <input type="email" placeholder="Email" name="useremail" required/>
+            <input type="password" placeholder="Password" name="password" required/>
 
             <button class="cover">Sign Up</button>
         </form>
@@ -44,8 +44,8 @@
 
             <div class="overlay-panel overlay-right">
                 <h1>Hello, Friend!</h1>
-                <p>Enter your personal details and start journey with us</p>
-                <button class="ghost cover" id="signUp">Sign Up</button>
+                <p>Enter book reading with us</p>
+                <a href="./login.php"> <button class="ghost cover" id="signUp">Sign In</button></a>
             </div>
         </div>
     </div>
