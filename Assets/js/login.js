@@ -1,25 +1,22 @@
-function show() {
-  var p = document.getElementById("pwd");
-  p.setAttribute("type", "text");
-}
+let passInput = document.querySelector(".pass-input");
+let passVisibility = document.querySelector(".view-pass");
 
-function hide() {
-  var p = document.getElementById("pwd");
-  p.setAttribute("type", "password");
-}
-
-var pwShown = 0;
-
-document.getElementById("eye").addEventListener(
-  "click",
-  function () {
-    if (pwShown == 0) {
-      pwShown = 1;
-      show();
+passInput.addEventListener("keyup", function () {
+    passInputLength = passInput.value.length;
+    if (passInputLength == 0) {
+        passVisibility.style.display = "none";
     } else {
-      pwShown = 0;
-      hide();
+        passVisibility.style.display = "block";
     }
-  },
-  false
-);
+});
+
+passVisibility.addEventListener("mousedown", function () {
+    passInputType = passInput.getAttribute("type");
+    if (passInputType == "password") {
+        passInput.setAttribute("type", "text");
+        passVisibility.setAttribute("src", "assets/img/hidden.png");
+    } else {
+        passInput.setAttribute("type", "password");
+        passVisibility.setAttribute("src", "assets/img/view.png");
+    }
+});
