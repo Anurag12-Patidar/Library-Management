@@ -18,9 +18,9 @@ if(!isset($_SESSION['bookit-username'])){
     </script>
     ";
 }
+$username = $_SESSION['bookit-username'];
+//$categories = $_POST['category'];
 ?>
-
-
 
 <html>
 <head>
@@ -28,6 +28,7 @@ if(!isset($_SESSION['bookit-username'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book-It</title>
+    <link rel="stylesheet" href="../Assets/styling/detailview.css">
 </head>
 <body>
     <?php
@@ -38,11 +39,27 @@ if(!isset($_SESSION['bookit-username'])){
          * */
     ?>
 
-<!--Navigation    -->
-    <a href="../">
-        <button>Back</button>
-    </a>
-<!--Navigation ends    -->
+    <!--Navigation-->
+    <div class="nav-container">
+        <nav class="navbar">
+            <h1 class="nav-heading">Book-IT</h1>
+            <?php
+            if($username){
+//            Username if found in the session so display the username and the button to logout
+                ?>
+                <div class="nav-content">
+                    Welcome back : <?php echo $username ?>
+                    <br>
+                    <a href="../Actions/logout.php"><button class="nav-button">Logout</button></a>
+                    <a href="../"><button class="nav-button">Back</button></a>
+                </div>
+
+                <?php
+            }
+            ?>
+        </nav>
+    </div>
+    <!--Navigation ends-->
 
     <div class="book">
                 <h1>Name : <?php echo $dataOfBook[2] ?></h1>
