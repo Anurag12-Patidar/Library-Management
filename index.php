@@ -24,35 +24,50 @@ include ('./Actions/functions.php');
 <!--    Nav bar styling -->
     <link rel="stylesheet" href="./Assets/styling/navbar.css">
 
+<!--    -->
+    <link rel="stylesheet" href="./Assets/styling/container.css">
+
 </head>
 <body>
+    <div class="nav-container">
     <nav class="navbar">
-        <h1>Book-IT</h1>
+        <h1 class="nav-heading">Book-IT</h1>
         <?php
         //    Navigation for the user
         if($username){
 //            Username if found in the session so display the username and the button to logout
             ?>
+                <div class="nav-content">
+            <div class="text">
             Welcome back : <?php echo $username ?>
-            <br>
-            <a href="./Actions/logout.php"><button>Logout</button></a>
+            </div>
+<!--            <br>-->
+            <a href="./Actions/logout.php"><button class="nav-button logout">Logout</button></a>
 
+                </div>
             <?php
         }else{
 //            No user is found , so link to login
             ?>
-            <a href="./Partials/login.php"><button>Login</button></a>
+                <div class="nav-content">
+            <a href="./Partials/login.php"><button class="nav-button login">Login</button></a>
+
             <br>
             <br>
-            <a href="./Partials/register.php"><button>Register</button></a>
+            <a href="./Partials/register.php"><button class="nav-button register">Register</button></a>
+                </div>
             <?php
         }
         ?>
     </nav>
+    </div>
 
 
 <!--Section to display the Books-->
-<h2>Categories</h2>
+    <div class="main--section--books">
+
+
+<h1 class="heading">Categories</h1>
     <?php
 //    Get all the categories
     $categories = getAllTheCategoriesOfBooks();
@@ -64,20 +79,24 @@ include ('./Actions/functions.php');
     <?php
     }else{
         ?>
-        <section>
+        <section class="main-section">
             <?php
             //        Need to get a book category from the database and display it in the div
             for($i=0;$i<count($categories);$i++){
 //        Get the books for categories : $categories[$i][0]
 //            $BooksData contains the details of the books of a category
                 ?>
-                <div class="main-category">
-                   <h3> <?php echo $categories[$i][0] ?> </h3>
-                    <p>Content of the Category</p>
-                    <form action="./Partials/categoryview.php" method="post">
-                        <input type="hidden" name="category" value="<?php echo $categories[$i][0] ?>">
-                        <button>More</button>
-                    </form>
+                <div class="container main-category">
+                    <div class="content">
+
+                       <h1> <?php echo $categories[$i][0] ?> </h1>
+                        <h3>Content of the Category</h3>
+                        <form action="./Partials/categoryview.php" method="post">
+                            <input type="hidden" name="category" value="<?php echo $categories[$i][0] ?>">
+                            <button class="form-button">More</button>
+                        </form>
+                        </div>
+                    <div class="flap"></div>
                 </div>
             <?php
             }
@@ -87,7 +106,7 @@ include ('./Actions/functions.php');
     }
     ?>
 
-
+    </div>
 
 
 </body>
