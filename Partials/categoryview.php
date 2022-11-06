@@ -28,21 +28,30 @@ $categories = $_POST['category'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Book-It</title>
+    <link rel="stylesheet" href="../Assets/styling/book.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
-<?php echo $categories; ?>
 <!--Navigation-->
+<div class="nav-container">
+    <nav class="navbar">
+        <h1 class="nav-heading">Book-IT</h1>
 <?php
     if($username){
 //            Username if found in the session so display the username and the button to logout
     ?>
+            <div class="nav-content">
     Welcome back : <?php echo $username ?>
     <br>
-    <a href="../Actions/logout.php"><button>Logout</button></a>
-        <a href="../"><button>Back</button></a>
+    <a href="../Actions/logout.php"><button class="nav-button">Logout</button></a>
+        <a href="../"><button class="nav-button">Back</button></a>
+            </div>
+
     <?php
 }
 ?>
+    </nav>
+</div>
 <!--Navigation ends-->
 
 <!--Main Category part starts-->
@@ -51,20 +60,29 @@ $categories = $_POST['category'];
     $BooksData = getAllTheBooksForACategory($categories);
 ?>
 <div class="category" id="<?php echo $categories; ?>">
-    <h1> <?php echo $categories ?> </h1>
+    <h1 class="category-heading"> <?php echo $categories ?> </h1>
     <?php
     //Display the particular books
     for($j=0;$j<count($BooksData);$j++){
         ?>
-        <div class="book">
-            <img src="../Uploads/<?php echo $BooksData[$j][3]?>" alt="">
-            <h3><?php echo $BooksData[$j][2] ?></h3>
-            <p><?php echo $BooksData[$j][4] ?></p>
-            <p><?php echo $BooksData[$j][5] ?></p>
-            <form action="./detailview.php" method="post">
-                <input type="hidden" name="book" value="<?php echo $BooksData[$j][0] ?>">
-                <button>More</button>
-            </form>
+        <div id="container">
+            <div class="product-details">
+
+            <h1><?php echo $BooksData[$j][2] ?></h1>
+            <p class="information">Author : <?php echo $BooksData[$j][4] ?> <br>
+            Publication :<?php echo $BooksData[$j][5] ?></p>
+            <div class="control">
+                <form action="./detailview.php" method="post">
+                    <input type="hidden" name="book" value="<?php echo $BooksData[$j][0] ?>">
+                    <button class="btn"> <span class="buy"> More</span></button>
+                </form>
+            </div>
+            </div>
+
+            <div class="product-image">
+                <img src="../Uploads/<?php echo $BooksData[$j][3]?>" alt="">
+
+            </div>
         </div>
 
         <?php
