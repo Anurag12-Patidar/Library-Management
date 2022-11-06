@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BookIt-register</title>
     <link rel="stylesheet" href="../Assets/styling/register.css">
 </head>
 <body>
@@ -37,6 +37,7 @@
             <input type="password" placeholder="Password" name="password" required/>
 
             <button class="cover">Sign Up</button>
+            <a href="../">Back Home</a>
         </form>
     </div>
     <div class="overlay-container">
